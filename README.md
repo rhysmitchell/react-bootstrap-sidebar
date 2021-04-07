@@ -1,5 +1,5 @@
 # react-bootstrap-sidebar
-Static collapsible Bootstrap sidebar menu
+Static collapsible Bootstrap sidebar menu (for react-bootstrap)
 
 # Installation
 ```
