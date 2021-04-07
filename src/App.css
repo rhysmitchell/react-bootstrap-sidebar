@@ -112,7 +112,8 @@ li a.dropdown-toggle::after {
   }
 
   .content.is-open {
-    margin-left: 100%;
+    display: none;
+      transition: all 0.5s;
   }
 
   .sidebar.is-open {

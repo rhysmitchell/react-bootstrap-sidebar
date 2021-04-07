@@ -1,56 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAlignLeft } from "@fortawesome/free-solid-svg-icons";
+import { faAlignLeft, faBars } from "@fortawesome/free-solid-svg-icons";
+import { SidebarContext } from '../../context/sideBarContext';
 import {
   Navbar,
   Button,
-  NavbarToggler,
-  Collapse,
   Nav,
   NavItem,
   NavLink,
-} from "reactstrap";
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Topbar = ({ toggleSidebar }) => {
-  const [topbarIsOpen, setTopbarOpen] = useState(true);
-  const toggleTopbar = () => setTopbarOpen(!topbarIsOpen);
+const Topbar = () => {
+  const { toggleSidebar } = useContext(SidebarContext);
 
   return (
     <Navbar
-      color="light"
-      light
+      bg="light"
       className="navbar shadow-sm p-3 mb-5 bg-white rounded"
-      expand="md"
+      expand="lg"
     >
       <Button color="info" onClick={toggleSidebar}>
         <FontAwesomeIcon icon={faAlignLeft} />
       </Button>
-      <NavbarToggler onClick={toggleTopbar} />
-      <Collapse isOpen={topbarIsOpen} navbar>
-        <Nav className="ml-auto" navbar>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-1"}>
-              page 1
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-2"}>
-              page 2
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-3"}>
-              page 3
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={Link} to={"/page-4"}>
-              page 4
-            </NavLink>
-          </NavItem>
+
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+      <Navbar.Collapse>
+        <Nav className="ml-auto">
+          <Nav.Link as={Link} to={"/page-1"}>
+            page 1
+            </Nav.Link>
+
+          <Nav.Link as={Link} to={"/page-2"}>
+            page 2
+            </Nav.Link>
+
+          <Nav.Link as={Link} to={"/page-3"}>
+            page 3
+            </Nav.Link>
+
+          <Nav.Link as={Link} to={"/page-4"}>
+            page 4
+            </Nav.Link>
         </Nav>
-      </Collapse>
+      </Navbar.Collapse>
     </Navbar>
   );
 };
